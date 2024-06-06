@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { OceanApiService } from './ocean-api.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ocean',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './ocean.component.html',
   styleUrl: './ocean.component.css'
 })
@@ -15,8 +16,8 @@ export class OceanComponent {
   public regiao:string="";
   public specieNome:string="";
   public specieStatus:string="";
-  public aguaTemp:number=0;
-  public ph:number=0;
+  public aguaTemp:string="";
+  public ph:string="";
   public lvPoluicao:string="";
 
   public jsonFile: any;

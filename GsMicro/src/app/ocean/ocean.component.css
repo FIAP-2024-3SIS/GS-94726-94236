@@ -1,9 +1,13 @@
 .container{
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   align-items: center;
 }
 
 .search-button{
   margin-top: 1.6rem;
+  margin-right: 6rem;
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }

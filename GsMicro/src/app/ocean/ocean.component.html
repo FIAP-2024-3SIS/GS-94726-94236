@@ -1,4 +1,4 @@
-<h1>Filtros</h1>
+<h1 style="text-align: center;">Filtros</h1>
 <form #form="ngForm" (ngSubmit)="submitForm(form.value)">
   <div class="container">
     <div class="filter-box">
@@ -15,45 +15,49 @@
     </div>
     <div class="filter-box">
       <div class="filter-label">Temperatura da Água</div>
-      <input type="number" class="filter-input" id="aguaTemp" name="aguaTemp" [(ngModel)]="aguaTemp">
+      <input type="text" class="filter-input" id="aguaTemp" name="aguaTemp" [(ngModel)]="aguaTemp">
     </div>
     <div class="filter-box">
       <div class="filter-label">PH</div>
-      <input type="number" class="filter-input" id="ph" name="ph" [(ngModel)]="ph">
+      <input type="text" class="filter-input" id="ph" name="ph" [(ngModel)]="ph">
     </div>
     <div class="filter-box">
       <div class="filter-label">Níveis de Poluição</div>
       <input type="text" class="filter-input" id="lvPoluicao" name="lvPoluicao" [(ngModel)]="lvPoluicao">
     </div>
   </div>
-  <button type="submit" class="search-button">Pesquisar</button>
+  <div class="search-button">
+    <button type="submit">Pesquisar</button>
+  </div>
 </form>
 
 
-<h2>Tabela de dados</h2>
-<div class="container2">
-  <table>
-    <thead>
+<h2 style="text-align: center;">Tabela de dados</h2>
+<div class="container">
+  <table style="width: 100%; border: solid 1px #000;">
+    <thead style="background-color: rgb(12, 155, 19); color: rgb(96, 255, 234);">
       <tr style="text-align: center;">
-        <th>Região</th>
-        <th>Temperatura da água</th>
-        <th>PH</th>
-        <th>Nível da poluição</th>
+        <th style="width: 25%;">Região</th>
+        <th style="width: 25%;">Temperatura da água</th>
+        <th style="width: 25%;">PH</th>
+        <th style="width: 25%;">Nível da poluição</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let especie of jsonFile" style="text-align: center;">
-        <td>{{ jsonFile.regiao }}</td>
-        <td>{{ jsonFile.temperaturaAgua }}</td>
-        <td>{{ jsonFile.pH }}</td>
-        <td>{{ jsonFile.nivelPoluicao }}</td>
-      </tr>
-      <div *ngFor="let json of jsonFile" style="text-align: center;">
-        <tr *ngFor="let especie of json">
-          <td colspan="2">{{ especie.nome }}</td>
-          <td colspan="2">{{ especie.status }}</td>
-        </tr>
-      </div>
+      <ng-container *ngIf="jsonFile != null">
+        <ng-container *ngFor="let json of jsonFile">
+          <tr style="text-align: center; background-color: rgb(100, 243, 236);">
+            <td style="width: 25%;">{{ json.regiao }}</td>
+            <td colspan="1" style="width: 25%;">{{ json.temperaturaAgua }}</td>
+            <td colspan="1" style="width: 25%;">{{ json.pH }}</td>
+            <td style="width: 25%;">{{ json.nivelPoluicao }}</td>
+          </tr>
+          <tr *ngFor="let especie of json.especies" style="text-align: center;">
+            <td colspan="2" style="width: 50%;">Nome da espécie: {{ especie.nome }}</td>
+            <td colspan="2" style="width: 50%;">Status de Conservação: {{ especie.status }}</td>
+          </tr>
+        </ng-container>
+      </ng-container>
     </tbody>
   </table>
 </div>
