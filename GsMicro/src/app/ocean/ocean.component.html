@@ -1,0 +1,65 @@
+<h1>Filtros</h1>
+<form #form="ngForm" (ngSubmit)="submitForm(form.value)">
+  <div class="container">
+    <div class="filter-box">
+      <div class="filter-label">Região</div>
+      <input type="text" class="filter-input" id="regiao" name="regiao" [(ngModel)]="regiao">
+    </div>
+    <div class="filter-box">
+      <div class="filter-label">Espécie</div>
+      <input type="text" class="filter-input" id="specieNome" name="specieNome" [(ngModel)]="specieNome">
+    </div>
+    <div class="filter-box">
+      <div class="filter-label">Estado de Conservação</div>
+      <input type="text" class="filter-input" id="specieStatus" name="specieStatus" [(ngModel)]="specieStatus">
+    </div>
+    <div class="filter-box">
+      <div class="filter-label">Temperatura da Água</div>
+      <input type="text" class="filter-input" id="aguaTemp" name="aguaTemp" [(ngModel)]="aguaTemp">
+    </div>
+    <div class="filter-box">
+      <div class="filter-label">PH</div>
+      <input type="text" class="filter-input" id="ph" name="ph" [(ngModel)]="ph">
+    </div>
+    <div class="filter-box">
+      <div class="filter-label">Níveis de Poluição</div>
+      <input type="text" class="filter-input" id="lvPoluicao" name="lvPoluicao" [(ngModel)]="lvPoluicao">
+    </div>
+  </div>
+  <button type="submit" class="search-button">Pesquisar</button>
+</form>
+
+
+<h2>Tabela de dados</h2>
+<div class="container2">
+  <table>
+    <thead>
+      <tr style="text-align: center;">
+        <th>Região</th>
+        <th>Temperatura da água</th>
+        <th>PH</th>
+        <th>Nível da poluição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="text-align: center;">
+        <td>Atlântico Norte</td>
+        <td>15</td>
+        <td>8.1</td>
+        <td>Alto</td>
+      </tr>
+      <tr style="text-align: center;">
+        <td colspan="2">Nome da espécie</td>
+        <td colspan="2">Status de conservação</td>
+      </tr>
+      <tr style="text-align: center;">
+        <td colspan="2">Nome da espécie</td>
+        <td colspan="2">Status de conservação</td>
+      </tr>
+      <tr style="text-align: center;">
+        <td colspan="2">Nome da espécie</td>
+        <td colspan="2">Status de conservação</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
