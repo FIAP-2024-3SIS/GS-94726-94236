@@ -15,11 +15,11 @@
     </div>
     <div class="filter-box">
       <div class="filter-label">Temperatura da Água</div>
-      <input type="text" class="filter-input" id="aguaTemp" name="aguaTemp" [(ngModel)]="aguaTemp">
+      <input type="number" class="filter-input" id="aguaTemp" name="aguaTemp" [(ngModel)]="aguaTemp">
     </div>
     <div class="filter-box">
       <div class="filter-label">PH</div>
-      <input type="text" class="filter-input" id="ph" name="ph" [(ngModel)]="ph">
+      <input type="number" class="filter-input" id="ph" name="ph" [(ngModel)]="ph">
     </div>
     <div class="filter-box">
       <div class="filter-label">Níveis de Poluição</div>
@@ -42,24 +42,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr style="text-align: center;">
-        <td>Atlântico Norte</td>
-        <td>15</td>
-        <td>8.1</td>
-        <td>Alto</td>
+      <tr *ngFor="let especie of jsonFile" style="text-align: center;">
+        <td>{{ jsonFile.regiao }}</td>
+        <td>{{ jsonFile.temperaturaAgua }}</td>
+        <td>{{ jsonFile.pH }}</td>
+        <td>{{ jsonFile.nivelPoluicao }}</td>
       </tr>
-      <tr style="text-align: center;">
-        <td colspan="2">Nome da espécie</td>
-        <td colspan="2">Status de conservação</td>
-      </tr>
-      <tr style="text-align: center;">
-        <td colspan="2">Nome da espécie</td>
-        <td colspan="2">Status de conservação</td>
-      </tr>
-      <tr style="text-align: center;">
-        <td colspan="2">Nome da espécie</td>
-        <td colspan="2">Status de conservação</td>
-      </tr>
+      <div *ngFor="let json of jsonFile" style="text-align: center;">
+        <tr *ngFor="let especie of json">
+          <td colspan="2">{{ especie.nome }}</td>
+          <td colspan="2">{{ especie.status }}</td>
+        </tr>
+      </div>
     </tbody>
   </table>
 </div>

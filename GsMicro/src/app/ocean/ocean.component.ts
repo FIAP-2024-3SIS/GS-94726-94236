@@ -15,21 +15,26 @@ export class OceanComponent {
   public regiao:string="";
   public specieNome:string="";
   public specieStatus:string="";
-  public aguaTemp:string="";
-  public ph:string="";
+  public aguaTemp:number=0;
+  public ph:number=0;
   public lvPoluicao:string="";
 
   public jsonFile: any;
 
   submitForm(formValue: any) {
+    const regiaoEncoded = encodeURIComponent(this.regiao);
+    const specieNomeEncoded = encodeURIComponent(this.specieNome);
+    const specieStatusEncoded = encodeURIComponent(this.specieStatus);
+    const lvPoluicaoEncoded = encodeURIComponent(this.lvPoluicao);
+
     console.log(formValue);
     this.service.getOceanData(
-      this.regiao,
-      this.specieNome,
-      this.specieStatus,
+      regiaoEncoded,
+      specieNomeEncoded,
+      specieStatusEncoded,
       this.aguaTemp,
       this.ph,
-      this.lvPoluicao
+      lvPoluicaoEncoded
     ).subscribe((data) => {
       this.jsonFile = data;
       console.log(this.jsonFile);

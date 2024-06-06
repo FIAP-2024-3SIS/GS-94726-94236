@@ -13,12 +13,11 @@ export class OceanApiService {
     regiao:string,
     specieNome:string,
     specieStatus:string,
-    aguaTemp:string,
-    ph:string,
+    aguaTemp:number,
+    ph:number,
     lvPoluicao:string,
     ):Observable<any>{
-      console.log(`https://fiap-3sis-gs-20241.azurewebsites.net/OceanData?regiao=${regiao}&especie=${specieNome}&statusConservacao=${specieStatus}&temperaturaMin=${aguaTemp}&temperaturaMax=${aguaTemp}&phMin=${ph}&phMax=${ph}&nivelPoluicao=${lvPoluicao}&pagina=1&qtde=1`);
 
-    return this.http.get<any>(`https://fiap-3sis-gs-20241.azurewebsites.net/OceanData?regiao=${regiao}&especie=${specieNome}&statusConservacao=${specieStatus}&temperaturaMin=${aguaTemp}&temperaturaMax=${aguaTemp}&phMin=${ph}&phMax=${ph}&nivelPoluicao=${lvPoluicao}&pagina=1&qtde=1`);
+    return this.http.get<any>(`https://fiap-3sis-gs-20241.azurewebsites.net/OceanData?regiao=${regiao}&especie=${specieNome}&statusConservacao=${specieStatus}&temperaturaMin=0&temperaturaMax=${aguaTemp}&phMin=0&phMax=${ph}&nivelPoluicao=${lvPoluicao}&pagina=1&qtde=1`);
   }
 }
